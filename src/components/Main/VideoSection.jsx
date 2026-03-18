@@ -1,6 +1,6 @@
 import React from "react";
 
-const Video = () => {
+const VideoSection = () => {
   return (
     <section className="w-full h-screen relative overflow-hidden">
       
@@ -28,4 +28,4 @@ const Video = () => {
   );
 };
 
-export default Video;
+export default VideoSection;
