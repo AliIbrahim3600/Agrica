@@ -6,7 +6,7 @@ import { RxHamburgerMenu } from "react-icons/rx";
 const NavLink = ({ href, children }) => (
   <a
     href={href}
-    className="relative inline-block pb-1 text-gray-600 hover:text-green-500 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-green-500 after:transition-all after:duration-300 hover:after:w-full"
+    className="relative inline-block pb-1 text-gray-600 hover:text-green-500 after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-green-500 after:transition-all after:duration-300 hover:after:w-full"
   >
     {children}
   </a>
@@ -30,7 +30,7 @@ const Nav = () => {
         className={`
           flex flex-col items-center gap-6
           absolute top-full left-0 w-full bg-white shadow-md z-50
-          md:static md:w-auto md:flex-row md:items-center md:shadow-none md:p-0 md:bg-transparent md:max-h-full md:overflow-visible md:opacity-100
+          md:static md:w-auto md:flex-row md:items-center md:shadow-none md:p-0 md:bg-transparent md:max-h-full md:overflow-visible md:opacity-100 md:pointer-events-auto
           transition-all duration-300 ease-in-out overflow-hidden
           ${isOpen ? "max-h-96 opacity-100 p-5" : "max-h-0 opacity-0 pointer-events-none"}
         `}
