@@ -1,5 +1,6 @@
 import React from 'react'
 import Nav from '../../components/NavBar/Nav'
+import Hero from '../../components/Hero/Hero'
 import TipsSection from '../../components/Main/TipsSection'
 import HelpSection from '../../components/Main/HelpSection'
 
@@ -11,6 +12,7 @@ const Home = () => {
   return (
     <main>
       <Nav />
+      <Hero />
       <ChooseUs />
       <VideoSection />
       <TipsSection />
