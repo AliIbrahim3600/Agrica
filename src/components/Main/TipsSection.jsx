@@ -1,5 +1,5 @@
 import React from "react";
-import Infocard from "./infocard";
+import Infocard from "./Infocard";
 
 const TipsSection = () => {
   return (
