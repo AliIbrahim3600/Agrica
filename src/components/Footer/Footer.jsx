@@ -1,57 +1,92 @@
 import React from "react";
-import { FaTwitter } from "react-icons/fa";
-import { FaFacebook } from "react-icons/fa";
-import { FaYoutube } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { FaTwitter, FaFacebook, FaYoutube, FaInstagram, FaLeaf } from "react-icons/fa";
+import logo from "../../assets/logo.png";
 
 const Footer = () => {
   return (
-    <div className="bg-[#f3fff2] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 text-[#234821] px-6 md:px-12 lg:px-20 pt-10 md:pt-16 lg:pt-20 pb-10">
-      <div className="gap-6 flex flex-col items-center sm:items-start text-center sm:text-left">
-        <img
-          src="https://preview.colorlib.com/theme/agrica/assets/img/logo/logo2_footer.png"
-          alt="preview"
-        />
-        <p className="w-full max-w-sm text-[clamp(14px,2vw,18px)] leading-relaxed">
-          The information is also part of the MF Rural, where you can find news,
-          quotes, technological information and others, in addition.
-        </p>
-        <div className="flex gap-4">
-          <div className="rounded-full p-3 bg-[#e8f9e6] w-fit text-[#03bc2a] hover:bg-[#04b62a] hover:text-white duration-150">
-            <FaTwitter />
+    <footer className="bg-accent text-dark pt-20 pb-10">
+      <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        {/* Brand Section */}
+        <div className="space-y-6">
+          <Link to="/">
+            <img src={logo} alt="Agrica Logo" className="h-12" />
+          </Link>
+          <p className="text-gray-600 leading-relaxed max-w-xs">
+            Leading the way in sustainable agriculture. Providing innovative solutions to help farmers grow more with less environmental impact.
+          </p>
+          <div className="flex gap-4">
+            {[FaTwitter, FaFacebook, FaYoutube, FaInstagram].map((Icon, idx) => (
+              <a
+                key={idx}
+                href="#"
+                className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-secondary hover:bg-secondary hover:text-white transition-all duration-300 shadow-sm border border-border"
+              >
+                <Icon />
+              </a>
+            ))}
           </div>
-          <div className="rounded-full p-3 bg-[#e8f9e6] w-fit text-[#03bc2a] hover:bg-[#04b62a] hover:text-white duration-150">
-            <FaFacebook />
-          </div>
-          <div className="rounded-full p-3 bg-[#e8f9e6] w-fit text-[#03bc2a] hover:bg-[#04b62a] hover:text-white duration-150">
-            <FaYoutube />
-          </div>
+        </div>
+
+        {/* Quick Links */}
+        <div>
+          <h4 className="text-xl font-bold mb-6 flex items-center gap-2">
+            <FaLeaf className="text-secondary text-sm" /> Services
+          </h4>
+          <ul className="space-y-4">
+            {["Organic Farming", "Crop Rotation", "Soil Health", "Smart Irrigation", "Sustainable Harvest"].map((item) => (
+              <li key={item}>
+                <Link to="/services" className="text-gray-600 hover:text-secondary hover:translate-x-1 inline-block transition-all">
+                  {item}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Navigation */}
+        <div>
+          <h4 className="text-xl font-bold mb-6 flex items-center gap-2">
+            <FaLeaf className="text-secondary text-sm" /> Company
+          </h4>
+          <ul className="space-y-4">
+            {["Home", "About Us", "Our Blog", "Latest News", "Contact Us"].map((item) => (
+              <li key={item}>
+                <Link to={item === "Home" ? "/" : `/${item.toLowerCase().split(' ')[0]}`} className="text-gray-600 hover:text-secondary hover:translate-x-1 inline-block transition-all">
+                  {item}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Newsletter */}
+        <div>
+          <h4 className="text-xl font-bold mb-6 flex items-center gap-2">
+            <FaLeaf className="text-secondary text-sm" /> Newsletter
+          </h4>
+          <p className="text-gray-600 mb-4">Subscribe to get latest agricultural updates.</p>
+          <form className="relative">
+            <input
+              type="email"
+              placeholder="Your email"
+              className="w-full px-5 py-3 rounded-full border border-border focus:outline-none focus:ring-2 focus:ring-secondary/30 pr-12 bg-white"
+            />
+            <button
+              type="submit"
+              className="absolute right-2 top-1.5 bg-secondary text-white w-9 h-9 rounded-full flex items-center justify-center hover:bg-primary transition-colors"
+            >
+              ➔
+            </button>
+          </form>
         </div>
       </div>
 
-      <ul className="flex flex-col gap-4 items-center sm:items-start">
-        <span className="text-2xl font-medium mb-4">Quick Links</span>
-        <li><a href="#" className="hover:text-[#03bc2a] hover:underline duration-200">Design & creatives</a></li>
-        <li><a href="#" className="hover:text-[#03bc2a] hover:underline duration-200">Telecommunication</a></li>
-        <li><a href="#" className="hover:text-[#03bc2a] hover:underline duration-200">Restaurant</a></li>
-        <li><a href="#" className="hover:text-[#03bc2a] hover:underline duration-200">Programing</a></li>
-        <li><a href="#" className="hover:text-[#03bc2a] hover:underline duration-200">Architecture</a></li>
-      </ul>
-
-      <ul className="flex flex-col gap-4 items-center sm:items-start">
-        <span className="text-2xl font-medium mb-4">Company</span>
-        <li><a href="#" className="hover:text-[#03bc2a] hover:underline duration-200">Design & creatives</a></li>
-        <li><a href="#" className="hover:text-[#03bc2a] hover:underline duration-200">Telecommunication</a></li>
-        <li><a href="#" className="hover:text-[#03bc2a] hover:underline duration-200">Restaurant</a></li>
-        <li><a href="#" className="hover:text-[#03bc2a] hover:underline duration-200">Programing</a></li>
-        <li><a href="#" className="hover:text-[#03bc2a] hover:underline duration-200">Architecture</a></li>
-      </ul>
-
-      <div className="col-span-1 sm:col-span-2 lg:col-span-3 text-sm md:text-base text-center mt-4 border-t border-[#d4ecd2] pt-6">
-        <p>Copyright ©2026 All rights reserved | This template is made with by Colorlib</p>
+      <div className="container mx-auto px-6 mt-16 pt-8 border-t border-border text-center text-sm text-gray-500">
+        <p>© {new Date().getFullYear()} Agrica. All rights reserved. Cultivating a greener future.</p>
       </div>
-    </div>
+    </footer>
   );
 };
 
 export default Footer;
-

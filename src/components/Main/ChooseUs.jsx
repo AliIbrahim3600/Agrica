@@ -1,68 +1,97 @@
 import React from "react";
-import { FaPhoneAlt } from "react-icons/fa";
+import { motion } from "framer-motion";
+import { FaPhoneAlt, FaCheckCircle } from "react-icons/fa";
 
 const ChooseUs = () => {
+  const features = [
+    "25+ Years of Agricultural Excellence",
+    "Sustainable & Organic Farming Practices",
+    "Innovative Smart Irrigation Systems",
+    "Global Partnerships & Local Support"
+  ];
+
   return (
-    <div className="text-[#234821] grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-12 py-12 md:py-16 lg:py-20 px-4 md:px-6 lg:px-30">
-      
-      {/* Left Content */}
-      <div className="flex flex-col gap-6 md:gap-8 lg:gap-15 items-center lg:items-start text-center md:text-left">
+    <section className="bg-white overflow-hidden py-24">
+      <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         
-        {/* Heading */}
-        <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold leading-tight">
-          Why you should <br className="hidden md:block" />
-          choose us
-        </h1>
-
-        {/* Paragraph */}
-        <p className="max-w-prose text-sm md:text-lg leading-relaxed mx-auto md:mx-0">
-          Technological information and others, in addition to information about
-          companies in the sector, list of any and all companies related to
-          agribusiness.
-        </p>
-
-        {/* List */}
-        <ul className="flex flex-col gap-3 md:gap-4 list-disc pl-5 md:pl-6 text-sm md:text-lg text-left">
-          <li>
-            Technological information and others, in addition to information
-            about companies.
-          </li>
-          <li>
-            Technological information and others, in addition to information
-            about companies.
-          </li>
-          <li>
-            Technological information and others, in addition to information
-            about companies.
-          </li>
-        </ul>
-
-        {/* Button */}
-        <button className="bg-[#25771b] w-fit mx-auto md:mx-0 text-white relative overflow-hidden py-2.5 md:py-3 px-6 md:px-8 rounded-lg group">
-          
-          <span className="absolute inset-0 bg-green-500 -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-in-out z-0"></span>
-          
-          <div className="relative z-10 flex gap-3 items-center justify-center">
-            <FaPhoneAlt />
-            <span className="group-hover:text-white transition-colors duration-300 text-sm md:text-base">
-              (10) 892-293 2678
-            </span>
+        {/* Left Content */}
+        <motion.div 
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="space-y-8"
+        >
+          <div className="space-y-4">
+            <h2 className="text-secondary font-bold uppercase tracking-widest">Why Choose Us</h2>
+            <h1 className="text-4xl md:text-5xl font-bold text-dark leading-tight">
+              Cultivating Success With <br /> Modern Technology
+            </h1>
           </div>
-        </button>
+
+          <p className="text-gray-600 text-lg leading-relaxed">
+            We provide cutting-edge technological solutions and expert guidance to help agribusinesses thrive in a changing world. Our commitment to sustainability ensures long-term prosperity.
+          </p>
+
+          <ul className="space-y-4">
+            {features.map((feature, idx) => (
+              <motion.li 
+                key={idx}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3 + idx * 0.1 }}
+                className="flex items-center gap-4 text-dark font-medium"
+              >
+                <FaCheckCircle className="text-secondary text-xl shrink-0" />
+                <span>{feature}</span>
+              </motion.li>
+            ))}
+          </ul>
+
+          <motion.button 
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="bg-primary hover:bg-primary-hover text-white flex items-center gap-3 px-8 py-4 rounded-full transition-all shadow-xl group"
+          >
+            <FaPhoneAlt className="group-hover:rotate-12 transition-transform" />
+            <span className="font-bold">(10) 892-293 2678</span>
+          </motion.button>
+        </motion.div>
+
+        {/* Right Content */}
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="relative"
+        >
+          <div className="absolute -inset-4 bg-secondary/10 rounded-3xl -rotate-3" />
+          <img
+            src="https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&w=800&q=80"
+            alt="Farmer in the field"
+            className="relative z-10 w-full rounded-3xl shadow-2xl object-cover h-[500px]"
+          />
+          <motion.div 
+            animate={{ y: [0, -20, 0] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute -bottom-10 -right-10 bg-white p-6 rounded-2xl shadow-2xl z-20 hidden md:block border border-border"
+          >
+            <div className="flex items-center gap-4">
+              <div className="bg-accent p-3 rounded-full">
+                <FaCheckCircle className="text-secondary text-3xl" />
+              </div>
+              <div>
+                <p className="text-2xl font-bold text-dark">100%</p>
+                <p className="text-gray-500 text-sm">Organic Certified</p>
+              </div>
+            </div>
+          </motion.div>
+        </motion.div>
 
       </div>
-
-      {/* Right Content */}
-      <figure className="w-full flex justify-center">
-        <img
-          src="https://preview.colorlib.com/theme/agrica/assets/img/gallery/about2.png"
-          alt="agrica"
-          className="w-full max-w-md md:max-w-lg lg:max-w-xl h-auto object-contain"
-        />
-        <figcaption className="sr-only">agrica image</figcaption>
-      </figure>
-
-    </div>
+    </section>
   );
 };
 

@@ -1,1 +1,20 @@
 @import "tailwindcss";
+
+@theme {
+  --color-primary: #25771b;
+  --color-primary-hover: #1e5f15;
+  --color-secondary: #03bc2a;
+  --color-accent: #f3fff2;
+  --color-border: #d4ecd2;
+  --color-dark: #234821;
+}
+
+@layer base {
+  body {
+    @apply font-sans text-dark bg-white;
+  }
+}
+
+.nav-link-active {
+  @apply text-secondary after:w-full;
+}
